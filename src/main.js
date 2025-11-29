@@ -1,4 +1,4 @@
-// import './assets/main.scss';
+import './assets/main.scss';
 
 import { createApp, markRaw } from 'vue';
 import { createPinia } from 'pinia';
@@ -9,11 +9,13 @@ import i18n from './i18n';
 
 import { Constants } from './Constants';
 import images from './assets/getAssets.js';
-import { useCommonUtilities } from './composables/useCommonUtilities';
 
 const pinia = createPinia();
 pinia.use(({ store }) => {
-  store.$router = markRaw(router); // This is added so that $router is available on this in pinia store
+  store.$router = markRaw(router);
+  store.$i18n = markRaw(i18n);
+  store.$t = (key) => i18n.global.t(key); // This is added so that $router is available on this in pinia store
+  store.$images = images;
 });
 
 const app = createApp(Provider);
@@ -44,6 +46,8 @@ let language = getQueryParams('lang');
 if (!language) {
   language = 'en';
 }
+
+i18n.global.locale.value = language;
 
 function isMac() {
   if (navigator.userAgentData) {
