@@ -1,7 +1,13 @@
-@import './typology.scss';
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@use './variables' as *;
+@use './mediaQuery' as *;
+@use './typology';
 
-* {
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -122,20 +128,35 @@ body {
     font-weight: 700;
   }
 
-  .strip-input-default-styles {
+  .strip-input-default-styles,
+  .sids {
     padding: 0;
     margin: 0;
     border: none;
     outline: 0;
+    background: transparent;
+    min-width: 0;
 
     &:focus {
       outline: none;
     }
   }
+}
 
-  .disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  line-height: 0;
 }

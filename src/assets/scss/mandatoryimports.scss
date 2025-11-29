@@ -1,2 +1,4 @@
-@import './variables.scss';
-@import './mediaQuery.scss';
+// Modern SCSS - Forward all modules to make them globally available
+@forward './variables';
+@forward './mediaQuery';
+@forward './mixins';
