@@ -12,6 +12,14 @@ let authToken = localStorage.getItem('Authorization');
 if (authToken) {
   useUserStore.setAuth(authToken);
 }
+
+setInterval(() => {
+  console.log('auth', auth.value);
+
+  setInterval(() => {
+    console.log('auth', auth.value);
+  }, 1000);
+}, 1000);
 </script>
 
 <template>
